@@ -5,22 +5,33 @@ import { CardWithTags, CardWithTagsProps } from "./CardWithTags";
 
 interface TwoColumnSectionProps {
   title: string;
-  cards: CardWithTagsProps[];
+  cards: any[]; // raw Gemini items
 }
 
 export function TwoColumnSection({ title, cards }: TwoColumnSectionProps) {
-  const mid = Math.ceil(cards.length / 2);
-  const leftColumn = cards.slice(0, mid);
-  const rightColumn = cards.slice(mid);
+  // 🧠 Mappa ogni oggetto Gemini → CardWithTagsProps
+  const mappedCards: CardWithTagsProps[] = cards.map((c) => ({
+    img: c.image || "/images/place.jpg",
+    title: c.name,
+    desc: c.description || c.address || "",
+    tags: [
+      c.type || "place",
+      c.price_range || "—",
+      c.rating ? `${c.rating.toFixed(1)}★` : "—",
+    ],
+  }));
+
+  const mid = Math.ceil(mappedCards.length / 2);
+  const leftColumn = mappedCards.slice(0, mid);
+  const rightColumn = mappedCards.slice(mid);
 
   return (
-    <section className="relative w-full max-w-6xl mx-auto px-6 py-20">
+    <section className="relative w-[80vw] mx-auto py-20">
       {/* Background glow */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,150,255,0.15),transparent_70%)] blur-3xl"></div>
 
       {/* Title */}
       <h2 className="text-3xl font-bold mb-4">{title}</h2>
-
 
       {/* Two columns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

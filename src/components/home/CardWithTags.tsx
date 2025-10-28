@@ -21,7 +21,7 @@ export function CardWithTags({ img, title, desc, tags }: CardWithTagsProps) {
       {/* Immagine a sinistra */}
       <div className="relative flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden">
         <Image
-          src={img}
+          src={"https://i.pinimg.com/736x/c6/4e/9d/c64e9d6fe9a5bfcc9ec40073b5997671.jpg"}
           alt={title}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -35,7 +35,7 @@ export function CardWithTags({ img, title, desc, tags }: CardWithTagsProps) {
 
         {/* Tag */}
         <div className="flex flex-wrap gap-2 mt-2">
-          {tags.map((tag, i) => (
+          {tags?.map((tag, i) => (
             <span
               key={i}
               className="px-2 py-[3px] rounded-full text-xs font-medium text-gray-200 
