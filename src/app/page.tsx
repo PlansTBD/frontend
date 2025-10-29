@@ -7,18 +7,18 @@ import { Card } from "@/components/home/Card";
 import Hero from "@/components/home/Hero";
 import { TwoColumnSection } from "@/components/home/TwoColumnSection";
 
-export default function HomePage({ initialData }: { initialData?: any }) {
-  const [loading, setLoading] = useState(!initialData);
-  const [today, setToday] = useState(initialData?.sections?.venues?.[0]?.items ?? []);
-  const [week, setWeek] = useState(initialData?.sections?.restaurants?.[0]?.items ?? []);
-  const [places, setPlaces] = useState(initialData?.sections?.bars ?? []);
+export default function HomePage() {
+  const [loading, setLoading] = useState(true);
+  const [today, setToday] = useState<any[]>([]);
+  const [week, setWeek] = useState<any[]>([]);
+  const [places, setPlaces] = useState<any[]>([]);
   const [city, setCity] = useState("Milan");
 
   useEffect(() => {
-    if (initialData) return;
     const lsCity = localStorage.getItem("tbd_city") || "Milan";
     setCity(lsCity);
-    fetch(`/api/home?city=${encodeURIComponent(lsCity)}`, { next: { revalidate: 60 } })
+
+    fetch(`/api/home?city=${encodeURIComponent(lsCity)}`, { cache: "no-store" })
       .then((r) => r.json())
       .then((json) => {
         setToday(json.sections?.venues?.[0]?.items ?? []);
@@ -26,9 +26,8 @@ export default function HomePage({ initialData }: { initialData?: any }) {
         setPlaces(json.sections?.bars ?? []);
       })
       .finally(() => setLoading(false));
-  }, [initialData]);
+  }, []);
 
-  // 🔹 Semplice placeholder di caricamento (riutilizzabile)
   const LoadingPlaceholder = (
     <div className="flex w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {Array.from({ length: 4 }).map((_, i) => (
@@ -44,12 +43,11 @@ export default function HomePage({ initialData }: { initialData?: any }) {
     <main className="min-h-screen bg-gradient-to-b from-black via-[#020617] to-black text-gray-100 font-sans overflow-hidden relative">
       <Hero />
 
-      {/* 🔸 Section: Today */}
       <Section title={`Happening Today in ${city}`}>
         {loading ? (
           LoadingPlaceholder
         ) : (
-          today.map((item: any, i: number) => (
+          today.map((item, i) => (
             <motion.div
               key={item.id ?? i}
               initial={{ opacity: 0, y: 20 }}
@@ -67,12 +65,11 @@ export default function HomePage({ initialData }: { initialData?: any }) {
         )}
       </Section>
 
-      {/* 🔸 Section: This Week */}
       <Section title="This Week">
         {loading ? (
           LoadingPlaceholder
         ) : (
-          week.map((item: any, i: number) => (
+          week.map((item, i) => (
             <motion.div
               key={item.id ?? i}
               initial={{ opacity: 0, y: 20 }}
@@ -90,14 +87,10 @@ export default function HomePage({ initialData }: { initialData?: any }) {
         )}
       </Section>
 
-      {/* 🔸 Section: Top Places */}
       <Section title="Top Places">
-        {loading ? (
-          LoadingPlaceholder
-        ) : (
-          <TwoColumnSection title="" cards={places} />
-        )}
+        {loading ? LoadingPlaceholder : <TwoColumnSection title="" cards={places} />}
       </Section>
     </main>
   );
 }
+
