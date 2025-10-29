@@ -6,8 +6,8 @@ import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 const leftLinks = [
-  { label: "Scopri", href: "#" },
-  { label: "Eventi", href: "#" },
+  { label: "Discover", href: "#" },
+  { label: "Events", href: "#" },
 ];
 
 const rightLinks = [
@@ -67,7 +67,7 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 300 }}
               className="text-3xl font-extrabold tracking-widest text-white cursor-pointer select-none drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
             >
-              TBD.
+              TBD
             </motion.div>
           </Link>
 
@@ -172,7 +172,7 @@ export default function Navbar() {
 
               {/* City picker also in mobile */}
               <div className="mt-6">
-                <p className="text-sm text-gray-400 mb-2">Seleziona città:</p>
+                <p className="text-sm text-gray-400 mb-2">Select City:</p>
                 <select
                   value={city}
                   onChange={(e) => handleCityChange(e.target.value)}
@@ -197,7 +197,7 @@ export default function Navbar() {
                   Terms
                 </Link>
               </div>
-              <p className="text-gray-500">© 2025 OUT. All rights reserved.</p>
+              <p className="text-gray-500">© 2025 TBD Company. All rights reserved.</p>
             </div>
           </motion.div>
         )}

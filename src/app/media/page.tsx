@@ -118,7 +118,7 @@ export default function MediaPage() {
       </section>
 
       <footer className="text-gray-500 text-center py-12">
-        © 2025 Anonymous Company. All rights reserved.
+        © 2026 TBD Company. All rights reserved.
       </footer>
     </main>
   );

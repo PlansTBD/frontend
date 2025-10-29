@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Out",
+  title: "TBD",
   description: "Live the present.",
 };
 
