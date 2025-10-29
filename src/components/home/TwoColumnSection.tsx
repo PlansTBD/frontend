@@ -26,7 +26,7 @@ export function TwoColumnSection({ title, cards }: TwoColumnSectionProps) {
   const rightColumn = mappedCards.slice(mid);
 
   return (
-    <section className="relative w-[80vw] mx-auto py-20">
+    <section className="relative w-[80vw] mx-auto">
       {/* Background glow */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,150,255,0.15),transparent_70%)] blur-3xl"></div>
 

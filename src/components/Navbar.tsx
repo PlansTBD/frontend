@@ -84,7 +84,7 @@ export default function Navbar() {
               </button>
 
               {dropdownOpen && (
-                <div className="cursor-pointer absolute right-0 mt-2 bg-black/80 border border-white/10 rounded-xl overflow-hidden shadow-lg backdrop-blur-xl">
+                <div className="cursor-pointer absolute min-w-[8vw] right-0 mt-2 bg-black/80 border border-white/10 rounded-xl overflow-hidden shadow-lg backdrop-blur-xl">
                   {cities.map((c) => (
                     <button
                       key={c}
