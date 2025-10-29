@@ -14,7 +14,7 @@ export default function HelpPage() {
     <main className="bg-white text-black min-h-screen flex flex-col items-center justify-center px-6 py-24">
       <h1 className="text-4xl font-bold mb-6">Help Center</h1>
       <p className="mb-8 text-gray-700 text-center max-w-xl">
-        Have questions or need support? Fill out the form below and we'll help you.
+        Have questions or need support? Fill out the form below and we&apos;ll help you.
       </p>
 
       {!submitted ? (
@@ -27,7 +27,7 @@ export default function HelpPage() {
           </button>
         </form>
       ) : (
-        <div className="text-green-600 mt-4">Thank you! We'll get back to you shortly.</div>
+        <div className="text-green-600 mt-4">Thank you! We&apos;ll get back to you shortly.</div>
       )}
     </main>
   );

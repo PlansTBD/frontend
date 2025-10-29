@@ -15,7 +15,7 @@ export default function ContactPage() {
     <main className="bg-white text-black min-h-screen flex flex-col items-center justify-center px-6 py-24">
       <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
       <p className="mb-8 text-gray-700 max-w-xl text-center">
-        Reach out to us with any questions or inquiries. We'll respond as soon as possible.
+        Reach out to us with any questions or inquiries. We&apos;ll respond as soon as possible.
       </p>
 
       {!submitted ? (

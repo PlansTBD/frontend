@@ -104,7 +104,7 @@ export default function ComingSoonPage() {
               className="object-cover object-none mx-auto invert"
             />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">We're Launching Soon</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">We&apos;re Launching Soon</h1>
           <p className="text-sm md:text-base text-gray-200 mb-6">
             The Network will be live on January 1st. <br></br>
             Before the launch, <strong>leave your Email</strong> to get the <strong>best experiences every week around Italy.</strong>
@@ -139,7 +139,7 @@ export default function ComingSoonPage() {
               </button>
             </form>
           ) : (
-            <p className="text-green-400 mt-4 text-sm">Thanks! We'll keep you posted 🚀</p>
+            <p className="text-green-400 mt-4 text-sm">Thanks! We&apos;ll keep you posted 🚀</p>
           )}
         </motion.div>
       </div>
