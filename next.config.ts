@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   images: {
     domains: ["lkjtlxtlxwqnqhvwlaed.supabase.co", "i.pinimg.com"],
   },
-  reactStrictMode: true,
+  experimental: {
+    optimizeCss: false,
+  },
 };
 
 export default nextConfig;
-

@@ -118,7 +118,7 @@ export default function Navbar() {
         <div className="flex w-full items-center justify-between md:hidden">
           {/* Logo left */}
           <Link href={"/"}>
-            <div className="text-2xl font-bold text-white tracking-widest">TBD.</div>
+            <div className="text-2xl font-bold text-white tracking-widest">TBD</div>
           </Link>
 
           {/* Hamburger right */}
