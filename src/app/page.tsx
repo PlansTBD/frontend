@@ -15,18 +15,21 @@ export default function HomePage() {
   const [city, setCity] = useState("Milan");
 
   useEffect(() => {
-    const lsCity = localStorage.getItem("tbd_city") || "Milan";
-    setCity(lsCity);
+  const lsCity = localStorage.getItem("tbd_city") || "New York";
+  setCity(lsCity);
 
-    fetch(`/api/home?city=${encodeURIComponent(lsCity)}`, { cache: "no-store" })
-      .then((r) => r.json())
-      .then((json) => {
-        setToday(json.sections?.venues?.[0]?.items ?? []);
-        setWeek(json.sections?.restaurants?.[0]?.items ?? []);
-        setPlaces(json.sections?.bars ?? []);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  fetch(`/api/home?city=${encodeURIComponent(lsCity)}`, { cache: "no-store" })
+    .then((r) => r.json())
+    .then((json) => {
+      // Oggi = prima sezione
+      setToday(json.sections?.[0]?.items ?? []);
+      // Settimana = seconda sezione
+      setWeek(json.sections?.[1]?.items ?? []);
+      // Top Places = terza sezione
+      setPlaces(json.sections?.[2]?.items ?? []);
+    })
+    .finally(() => setLoading(false));
+}, []);
 
   const LoadingPlaceholder = (
     <div className="flex w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -56,10 +59,12 @@ export default function HomePage() {
               transition={{ duration: 0.4, delay: i * 0.03 }}
             >
               <Card
-                title={item.name}
-                desc={item.description}
-                img={"https://i.pinimg.com/736x/1c/f3/d4/1cf3d4d89ff6f54d0f00bb07d90c4bea.jpg"}
+                title={item.title}
+                desc={item.venue ? `${item.venue} — ${item.price || "N/A"}` : item.category}
+                img={item.image || "https://i.pinimg.com/736x/1c/f3/d4/1cf3d4d89ff6f54d0f00bb07d90c4bea.jpg"}
+                link={item.url}
               />
+
             </motion.div>
           ))
         )}
@@ -78,9 +83,10 @@ export default function HomePage() {
               transition={{ duration: 0.4, delay: i * 0.03 }}
             >
               <Card
-                title={item.name}
-                desc={item.description}
-                img={"https://i.pinimg.com/736x/1c/f3/d4/1cf3d4d89ff6f54d0f00bb07d90c4bea.jpg"}
+                title={item.title}
+                desc={item.venue ? `${item.venue} — ${item.price || "N/A"}` : item.category}
+                img={item.image || "https://i.pinimg.com/736x/1c/f3/d4/1cf3d4d89ff6f54d0f00bb07d90c4bea.jpg"}
+                link={item.url}
               />
             </motion.div>
           ))

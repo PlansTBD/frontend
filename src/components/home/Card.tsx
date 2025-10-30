@@ -1,4 +1,4 @@
-export function Card({ title, desc, img }: { title?: string; desc?: string; img?: string }) {
+export function Card({ title, desc, img, link }: { title?: string; desc?: string; img?: string, link?:string }) {
   return (
     <div className="relative rounded-3xl overflow-hidden shadow-lg group cursor-pointer w-64 h-80 md:w-auto md:h-[420px] flex-shrink-0">
       {/* Background image */}
