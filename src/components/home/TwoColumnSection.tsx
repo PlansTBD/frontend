@@ -5,15 +5,15 @@ import { CardWithTags, CardWithTagsProps } from "./CardWithTags";
 
 interface TwoColumnSectionProps {
   title: string;
-  cards: any[]; // raw Gemini items
+  cards: any[];
 }
 
 export function TwoColumnSection({ title, cards }: TwoColumnSectionProps) {
-  // 🧠 Mappa ogni oggetto Gemini → CardWithTagsProps
+  console.log(cards)
   const mappedCards: CardWithTagsProps[] = cards.map((c) => ({
     img: c.image || "/images/place.jpg",
-    title: c.name,
-    desc: c.description || c.address || "",
+    title: c.title,
+    desc: c.description || c.venue || "",
     tags: [
       c.type || "place",
       c.price_range || "—",

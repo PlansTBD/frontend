@@ -1,6 +1,13 @@
 export function Card({ title, desc, img, link }: { title?: string; desc?: string; img?: string, link?:string }) {
   return (
+    
     <div className="relative rounded-3xl overflow-hidden shadow-lg group cursor-pointer w-64 h-80 md:w-auto md:h-[420px] flex-shrink-0">
+      <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block"
+    >
       {/* Background image */}
       <img
         src={img || "/images/fallback.jpg"}
@@ -18,6 +25,7 @@ export function Card({ title, desc, img, link }: { title?: string; desc?: string
         </h3>
         <p className="text-xs md:text-sm opacity-90 leading-snug">{desc}</p>
       </div>
+      </a>
     </div>
   );
 }

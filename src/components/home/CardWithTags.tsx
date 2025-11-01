@@ -20,10 +20,9 @@ export function CardWithTags({ img, title, desc, tags }: CardWithTagsProps) {
     >
       {/* Immagine a sinistra */}
       <div className="relative flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden">
-        <Image
-          src={"https://i.pinimg.com/736x/c6/4e/9d/c64e9d6fe9a5bfcc9ec40073b5997671.jpg"}
-          alt={title}
-          fill
+        <img
+          src={img}
+          alt={title || "Event"}
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
